@@ -21,6 +21,25 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class Page(models.Model):
+    title = models.CharField(max_length=75)
+    slug = models.SlugField(max_length=55, unique=True, default=None, null=True, blank=True)
+    content = models.TextField()
+    is_published = models.BooleanField(default=True, help_text='Marque para exibir no site')
+
+    def get_absolute_url(self):
+        if not self.is_published:
+            return reverse('blog:index')
+        return reverse('blog:page', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify_new(self.title)
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
 # Modelo de Categoria
 class Category(models.Model):
     class Meta:

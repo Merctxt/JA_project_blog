@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Tag, Category, Post, Comentario, Evento, Contato
+from .models import Tag, Category, Post, Comentario, Evento, Contato, Page
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
@@ -57,3 +57,12 @@ class ContatoAdmin(admin.ModelAdmin):
     search_fields = ('nome', 'email', 'mensagem')
     list_per_page = 20
     ordering = ['-id']
+
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'slug', 'is_published')
+    list_display_links = ('id', 'title')
+    search_fields = ('title', 'slug')
+    list_filter = ('is_published',)
+    prepopulated_fields = {'slug': ('title',)}
+    list_per_page = 10
