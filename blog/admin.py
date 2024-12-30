@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from .models import Tag, Category, Post, Comentario, Evento, Contato
 
 @admin.register(Tag)
@@ -20,6 +21,20 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('is_published', 'created_at', 'updated_at')
     list_per_page = 20
     ordering = ['-id']
+
+    def link(self, obj):
+        if not obj.pk:  
+            return '-'
+        url_do_post = obj.get_absolute_url()
+        safe_link = mark_safe(f'<a href="{url_do_post}" target="_blank">Ver post</a>')
+        return safe_link
+
+    def save_model(self, request, obj, form, change):
+        if change:
+            obj.updated_by = request.user
+        else:
+            obj.created_by = request.user
+        obj.save()
 
 @admin.register(Comentario)
 class ComentarioAdmin(admin.ModelAdmin):
