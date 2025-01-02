@@ -1,13 +1,29 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
-</head>
+{% include "global/partials/_head.html" %}
 <body>
-    <h1>qualquer coisa</h1>
+    {% include "global/partials/_header.html" %}
+    {% include "global/partials/_messages.html" %}
+
+    <main>
+        <aside class="sidebar">
+            <h2>Próximos Shows</h2>
+            <ul>
+                <li>10/06 - São Paulo, SP</li>
+                <li>15/06 - Rio de Janeiro, RJ</li>
+                <li>20/06 - Belo Horizonte, MG</li>
+            </ul>
+        </aside>
+        {% block content %}{% endblock content %}
+        
+
+        <aside class="sidebar">
+            <h2>Turnê 2023</h2>
+            <p>Confira as datas da minha turnê nacional "Vozes do Coração"</p>
+            <a href="#">Ver todas as datas</a>
+        </aside>
+    </main>
+
+    {% include "global/partials/_footer.html" %}
 </body>
 </html>

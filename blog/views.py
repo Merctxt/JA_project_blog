@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Page
+from django.contrib import messages
 
 # Views (definições iniciais renderizando templates)
 def index(request):
