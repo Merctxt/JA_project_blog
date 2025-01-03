@@ -1,0 +1,33 @@
+<article class="post-card">
+    {% if post.cover %}
+    <div class="post-card__image-wrapper">
+        <a href="{{ post.get_absolute_url }}" class="post-card__image-link">
+            <img 
+                class="post-card__image"
+                loading="lazy"
+                src="{{ post.cover.url }}" 
+                alt="Imagem de capa do post {{ post.title }}"
+            >
+        </a>
+    </div>
+    {% endif %}
+
+    <div class="post-card__text-wrapper">
+        <h2 class="post-card__title">
+            <a href="{{ post.get_absolute_url }}" class="post-card__title-link">
+                {{ post.title }}
+            </a>
+        </h2>
+
+        <p class="post-card__excerpt">
+            {{ post.excerpt|truncatewords:20 }}
+        </p>
+
+        <div class="post-card__actions">
+            <a class="post-card__action-link" href="{{ post.get_absolute_url }}">
+                <span>Leia mais</span>
+                <i class="fa-solid fa-circle-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</article>

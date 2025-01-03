@@ -6,7 +6,7 @@ app_name = 'blog'
 urlpatterns = [
     # URLs relacionadas aos posts
     path('', views.index, name='index'),  # Página inicial com lista de posts
-    path('post/<slug:slug>/', views.post_detail, name='post_detail'),  # Detalhes do post
+    path('post/<slug:slug>/', views.post_detail, name='post'),  # Detalhes do post
 
     # URLs para páginas estáticas e extras
     path('page/<slug:slug>/', views.page, name='page'),  # Página estática genérica

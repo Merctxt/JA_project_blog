@@ -2,13 +2,20 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Page
 from django.contrib import messages
+from django.core.paginator import Paginator
+from .models import Post
 
 # Views (definições iniciais renderizando templates)
 def index(request):
-    return render(request, 'blog/index.html')  # Página inicial
+    posts = Post.objects.filter(is_published=True).order_by('-created_at')
+    paginator = Paginator(posts, 9)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'blog/index.html', {'posts': page_obj})
 
 def post_detail(request, slug):
-    return render(request, 'blog/post_detail.html')  # Detalhes do post
+    post = Post.objects.get(slug=slug, is_published=True)
+    return render(request, 'blog/post_detail.html', {'post': post})
 
 def page(request, slug):
     page = get_object_or_404(Page, slug=slug, is_published=True)

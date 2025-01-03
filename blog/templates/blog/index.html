@@ -3,53 +3,23 @@
 {% block content %}
 <section class="content">
     <h1>🎵Artigos e Notícias</h1>
+
+    {% if posts %}
     <div class="posts-grid">
-        <article class="post">
-            <h2>Novo Single</h2>
-            <p>Lançamento do single "Melodia do Coração"...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Bastidores da Turnê</h2>
-            <p>Histórias incríveis dos bastidores...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Nova Música</h2>
-            <p>Inspiração para minha nova composição...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Colaboração</h2>
-            <p>Parceria musical com artista internacional...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Videoclipe</h2>
-            <p>Bastidores da gravação do novo clipe...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Fãs Incríveis</h2>
-            <p>Encontro emocionante com fãs...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Acústico</h2>
-            <p>Preparativos para o show acústico...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Nova Guitarra</h2>
-            <p>Adquiri uma guitarra vintage rara...</p>
-            <a href="#">Leia mais</a>
-        </article>
-        <article class="post">
-            <h2>Reflexões</h2>
-            <p>Pensamentos sobre a carreira musical...</p>
-            <a href="#">Leia mais</a>
-        </article>
+        {% for post in posts %}
+            {% include 'global/partials/_post-card.html' with i=forloop.counter0 %}
+        {% endfor %}
     </div>
+{% else %}
+    <div class="no-posts">
+        <h1>Nada encontrado 🫤</h1>
+        <p>
+            Não pude encontrar algo neste link, por favor, clique em outro
+            link do nosso blog ou vá para a <a href="{% url 'blog:index' %}">Home</a>
+        </p>
+    </div>
+{% endif %}
+
     {% include "global/partials/_pagination.html" %}
 </section>
 {% endblock content %}
