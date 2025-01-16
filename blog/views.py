@@ -7,11 +7,11 @@ from .models import Post
 
 # Views (definições iniciais renderizando templates)
 def index(request):
-    posts = Post.objects.filter(is_published=True).order_by('-created_at')
+    posts = Post.objects.filter(is_published=True).order_by('-created_at', '-id')
     paginator = Paginator(posts, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'blog/index.html', {'posts': page_obj})
+    return render(request, 'blog/index.html', {'posts': page_obj, 'page_obj': page_obj})
 
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug, is_published=True)

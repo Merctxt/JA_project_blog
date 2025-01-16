@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import Tag, Category, Post, Comentario, Evento, Contato, Page
+from django_summernote.admin import SummernoteModelAdmin
+from .models import Post
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
@@ -15,7 +17,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
+    summernote_fields = ('content',)
     list_display = ('title', 'is_published', 'created_at', 'updated_at', 'created_by', 'updated_by')
     search_fields = ('title', 'content')
     list_filter = ('is_published', 'created_at', 'updated_at')
@@ -59,10 +62,12 @@ class ContatoAdmin(admin.ModelAdmin):
     ordering = ['-id']
 
 @admin.register(Page)
-class PageAdmin(admin.ModelAdmin):
+class PageAdmin(SummernoteModelAdmin):
+    summernote_fields = ('content',)
     list_display = ('id', 'title', 'slug', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'slug')
     list_filter = ('is_published',)
     prepopulated_fields = {'slug': ('title',)}
     list_per_page = 10
+
