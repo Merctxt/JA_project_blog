@@ -327,3 +327,139 @@ footer {
 .post-card__action-link i {
     font-size: 1.2rem;
 }
+
+.single-post-content {
+    padding-top: var(--spacing-smlst);
+  }
+  
+  .single-post-title,
+  .single-post-excerpt {
+    margin: 0;
+  }
+  
+  .single-post-excerpt {
+    color: hsl(var(--clr-gray-base));
+    font-size: var(--fs-bg);
+    font-style: italic;
+  }
+  
+  /* Post Meta */
+  .post-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-base);
+    flex-flow: row wrap;
+  }
+  
+  .post-meta-link {
+    display: flex;
+    gap: var(--spacing-micro);
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--clr-gray-base));
+    text-decoration: none;
+  }
+  
+  .post-meta-link:hover {
+    text-decoration: none;
+  }
+  
+  /* Post tags */
+  .post-tags {
+    margin-top: var(--spacing-bg);
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: var(--spacing-smlst);
+  }
+  
+  .post-tags .post-tag-link,
+  .post-tags .post-tag-link i {
+    color: hsl(var(--clr-gray-base));
+  }
+  
+  .post-tags .post-tag-link:hover,
+  .post-tags .post-tag-link:hover i {
+    color: hsl(var(--clr-primary-base));
+    text-decoration: none;
+  }
+  
+  .post-tag-link {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-micro);
+  }
+  
+  /* Section */
+  .section-content-narrow {
+    max-width: var(--mw-post);
+  }
+  
+  .section-content-wide {
+    max-width: var(--mw-grid);
+  }
+  
+  .section-content-wide,
+  .section-content-narrow {
+    margin-inline: auto;
+  }
+  
+  .section-gap {
+    padding: var(--spacing-base);
+  }
+  
+  /* Utilities */
+  .pb-base {
+    padding-bottom: var(--spacing-base);
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .separator {
+    background: hsl(var(--clr-gray-ltst));
+    width: 50%;
+    margin-inline: auto;
+    height: 1px;
+    flex-shrink: 0;
+  }
+  
+  /* FontAwesome */
+  .fa-solid {
+    font-family: "Font Awesome 5 Solid";
+  }
+  
+  .fa-calendar-days {
+    content: "\f783"; /* FontAwesome Icon Unicode for calendar */
+  }
+  
+  .fa-user {
+    content: "\f007"; /* FontAwesome Icon Unicode for user */
+  }
+  
+  .fa-tag {
+    content: "\f02b"; /* FontAwesome Icon Unicode for tag */
+  }
+  
+  .fa-link {
+    content: "\f0c1"; /* FontAwesome Icon Unicode for link */
+  }
+  
+  /* Post actions */
+  .post-actions {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: end;
+    gap: var(--spacing-smlst);
+  }
+  
+  .single-post-cover img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }

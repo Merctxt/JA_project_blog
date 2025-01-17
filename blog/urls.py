@@ -12,8 +12,9 @@ urlpatterns = [
     path('page/<slug:slug>/', views.page, name='page'),  # Página estática genérica
     path('contact/', views.contact, name='contact'),  # Página de contato
     path('events/', views.events, name='events'),  # Página de eventos
-    path('tag/<slug:slug>/', views.TagList, name='tag_posts'),
-    path('category/<slug:slug>/', views.CategoryList, name='category_posts'),
+    path('tag/<slug:slug>/', views.TagList, name='tag'),
+    path('category/<slug:slug>/', views.CategoryList, name='category'),
+    path('search/', views.SearchList, name='search'),
 
     # URLs relacionadas a usuários
     path('login/', views.login_view, name='login'),  # Página de login
