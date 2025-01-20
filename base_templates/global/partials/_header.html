@@ -2,9 +2,10 @@
     <nav>
         <ul>
             <li><a href="{% url 'blog:index' %}">Home</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Música</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="{% url 'blog:contact' %}">Contato</a></li>
+            {% for page in pages %}
+                <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+            {% endfor %}
         </ul>
         <div class="search-bar">
             <form method="get" action="{% url 'blog:search' %}">

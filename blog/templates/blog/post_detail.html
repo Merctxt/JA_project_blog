@@ -54,6 +54,37 @@
                 {{ post.content|safe }}
               </div>
               
+              <div class="post-comments">
+                <h3>Comentários</h3>
+                
+                <!-- Listar Comentários -->
+                {% if comentarios %}
+                  <ul>
+                    {% for comentario in comentarios %}
+                      <li>
+                        <strong>{{ comentario.autor }}</strong> - <small>{{ comentario.data_criacao|date:"d/m/Y H:i" }}</small>
+                        <p>{{ comentario.texto }}</p>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <p>Não há comentários ainda. Seja o primeiro a comentar!</p>
+                {% endif %}
+              
+                <!-- Formulário de Comentário -->
+                {% if user.is_authenticated %}
+                  <h4>Deixe seu comentário:</h4>
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                  </form>
+                {% else %}
+                  <p><a href="{% url 'login' %}">Faça login</a> para comentar.</p>
+                {% endif %}
+              </div>
+
+
         {% if tags %}
         <div class="post-tags">
           <span>Tags: </span>

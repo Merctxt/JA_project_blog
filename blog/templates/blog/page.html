@@ -1,12 +1,13 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-  <main class="main-content section-wrapper">
-    <div class="section-content-narrow">
-      <div class="section-gap">
-        <h1 class="center">{{ page.title }}</h1>
-        {{ page.content | safe }}
-      </div>
+<main class="main-content section-wrapper">
+  <div class="page-content section-content-narrow">
+    <h1 class="page-title">{{ page.title }}</h1>
+
+    <div class="page-body">
+      {{ page.content|safe }}
     </div>
-  </main>
+  </div>
+</main>
 {% endblock content %}

@@ -1,1 +1,21 @@
-contact page
+{% extends "global/base.html" %}
+{% block content %}
+<section class="content">
+    <h1>Contato</h1>
+    <p>Envie sua mensagem através do formulário abaixo:</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+{% endblock content %}

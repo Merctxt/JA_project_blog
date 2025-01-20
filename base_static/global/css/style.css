@@ -221,6 +221,10 @@ footer {
     text-align: center;
     border-radius: var(--default-border-radius);
     font-size: var(--smaller-font-size);
+    align-self: center;
+    padding: 5px;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
   
   .message.success {
@@ -463,3 +467,29 @@ footer {
     margin: 0 auto;
     max-width: 100%;
   }
+
+  .post-comments {
+    margin-top: 2rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.post-comments h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-comments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.post-comments li {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.post-comments .btn {
+    margin-top: 0.5rem;
+}
